@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yacht Pro Service Montenegro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" href="slike/1.png" type="image/png" />
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            color: #001f3f;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* razmak između loga i teksta */
+        }
+
+        .logo-title img {
+            height: 50px; /* prilagodi visinu po potrebi */
+        }
+
+        .logo-title h1 {
+            font-size: 28px;
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            color: #001f3f;
+        }
+        nav a {
+            color: #001f3f;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .hero {
+            position: relative;
+            background: url('slike/Voice navar.jpg') center/cover no-repeat;
+            color: white;
+            padding: 150px 40px;
+            text-align: center;
+            overflow: hidden;
+            padding-top: 270px;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+        .hero button {
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            background: white;
+            color: #002b5c;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(213, 223, 232, 0.2); /* tamnoplavi ton */
+            backdrop-filter: blur(2px); /* zamućenje slike ispod */
+            z-index: 1;
+        }
+
+        .hero .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .section {
+            padding: 60px 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            background: #fff;
+        }
+        .section h2 {
+            flex: 1 100%;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+        .card {
+            width: 30%;
+            margin-bottom: 20px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+        .card-content {
+            padding: 20px;
+        }
+        .card-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .features {
+            display: flex;
+            justify-content: space-around;
+            background: #001f3f;
+            color: white;
+            padding: 40px;
+        }
+        .feature-item {
+            width: 20%;
+            text-align: center;
+        }
+        .feature-item h4 {
+            margin-top: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #001f3f;
+            color: white;
+        }
+        .about {
+            background: #f0f4f8;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #002b5c;
+        }
+
+        .about p {
+            max-width: 700px;
+            margin: 0 auto 50px auto;
+            font-size: 18px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+
+        .stat-item h3 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #002b5c;
+        }
+
+        @media (max-width: 768px) {
+            .stats {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media(max-width: 768px) {
+            .card, .feature-item {
+                width: 100%;
+            }
+        }
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            padding: 40px 20px;
+            background-color: #f4f4f4;
+            border-radius: 20px;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .about-text {
+            flex: 1 1 300px;
+            max-width: 600px;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .about-text h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #002b5c;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .statistika {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #001f3f, #003366);
+            color: white;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .stats {
+            display: flex;
+            position: relative; 
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding: 40px;
+            color: #f9f9f9;
+            text-align: center;
+            z-index: 1;
+            }
+
+        .stats::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('slike/Voice navar.jpg') no-repeat center center/cover;
+            filter: blur(2px);
+            opacity: 0.9;               /* prozirnost pozadine */
+            z-index: -1;                /* ispod sadržaja */
+            pointer-events: none;       /* da ne smeta klikovima */
+            }
+
+            .stat-item {
+            flex: 1 1 200px;
+            max-width: 250px;
+            padding: 50px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;  /* da budu vertikalno poređani */
+            align-items: center;     /* horizontalno centriranje */
+            justify-content: center; /* vertikalno centriranje ako je potrebno */
+            text-align: center;      /* centriranje teksta unutar */
+            max-height: 400px;            /* ili konkretna visina ako je potrebna */
+            }
+
+            .stat-item:hover {
+            transform: translateY(-10px);
+            }
+
+            .stat-item i {
+            font-size: 40px;
+            color: #0077b6;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite ease-in-out;
+            }
+
+            .stat-item h3 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 10px;
+            }
+
+            .stat-item p {
+            font-size: 16px;
+            color: #555;
+            }
+
+            @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0.6; }
+            100% { transform: scale(1); opacity: 1; }
+            }
+
+            #usluge {
+            scroll-margin-top: 80px; /* visina tvog fiksnog headera */
+            }
+
+            .contact-form {
+    background: #fff;
+    padding: 40px 50px;
+    border-radius: 16px;
+    box-shadow:
+      0 4px 8px rgba(0,0,0,0.1),
+      0 12px 24px rgba(0,0,0,0.15);
+    max-width: 450px;
+    width: 100%;
+  }
+
+  .contact-form h2 {
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-size: 28px;
+    color: #4a4a4a;
+    text-align: center;
+    letter-spacing: 1.1px;
+  }
+
+  /* Labela */
+  .contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #555;
+  }
+
+  /* Input polja i textarea */
+  .contact-form input[type="text"],
+  .contact-form input[type="email"],
+  .contact-form textarea {
+    width: 100%;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 2px solid #ddd;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: inherit;
+  }
+  .contact-form input[type="text"]:focus,
+  .contact-form input[type="email"]:focus,
+  .contact-form textarea:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 8px rgba(102, 126, 234, 0.5);
+    outline: none;
+  }
+
+  .contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  /* Dugme */
+  .contact-form button {
+    width: 100%;
+    background: #667eea;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 16px 0;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+  }
+  .contact-form button:hover {
+    background: #5563c1;
+    box-shadow: 0 10px 20px rgba(85, 99, 193, 0.5);
+  }
+
+  /* Poruka o uspehu */
+  .success-message {
+    background: #d4edda;
+    border: 1.5px solid #c3e6cb;
+    color: #155724;
+    padding: 15px 20px;
+    border-radius: 14px;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    display: none;
+  }
+
+    .card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+            <div class="logo-title">
+                <a href="index.html">
+                    <img src="slike/1.png" alt="Logo" style="height: 50px; vertical-align: middle; margin-right: 10px;">
+                </a>
+                <h1>Yacht Pro Service Montenegro</h1>
+            </div>
+        <nav>
+            <a href="#o-nama">O nama</a>
+            <a href="#usluge">Usluge</a>
+            <a href="#iskustva">Iskustva</a>
+            <a href="#partneri">Partneri</a>
+            <a href="#kontakt">Kontakt</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>Kompletna briga o vašem plovilu</h1>
+            <p>Tehnička ispravnost, sezonski pregledi i hitne intervencije, za vas sve na jednom mestu.</p>
+            <button style="margin-top: 20px;">Kontaktirajte nas odmah</button>
+        </div>
+    </section>
+
+    <section id="o-nama" class="about">
+        <div class="about-content">
+            <div class="about-image">
+                <img src="slike/tim1.jpg" alt="Naš tim">
+            </div>
+            <div class="about-text">
+                <h2>O nama</h2>
+                <p>
+                    Mi smo tim posvećenih profesionalaca koji nudi sve što vam je potrebno za ispravnost vaših plovila. 
+                    Sa više od decenije rada, ponosni smo na kvalitet usluge i zadovoljstvo naših klijenata širom sveta.
+                    Verujemo u kvalitet, pouzdanost i jedinstvene trenutke na moru.
+                </p>
+            </div>
+        </div>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <i class="fas fa-briefcase"></i>
+                    <h3 class="counter" data-target="30" data-speed="3000">0</h3>
+                    <p>Godina iskustva</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-users"></i>
+                    <h3 class="counter" data-target="1000" data-speed="200">0</h3>
+                    <p>Zadovoljnih korisnika</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-user-tie"></i>
+                    <h3 class="counter" data-target="9" data-speed="8000">0</h3>
+                    <p>Članova tima</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3 class="counter" data-target="10" data-speed="8000">0</h3>
+                    <p>Država u kojima smo radili</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="usluge">
+        <h2>Koja usluga vam je potrebna?</h2>
+        <div class="card">
+            <img src="slike/tim22.jpg" alt="Servis">
+            <div class="card-content">
+                <h3>Servis</h3>
+                <p> Nudimo kompletan servis plovila prilagođen svim vrstama i veličinama plovnih objekata.<br> Naš tim iskusnih stručnjaka brine o redovnom održavanju, popravkama i preventivnim pregledima kako bi vaše plovilo bilo u savršenom stanju i spremno za bezbednu plovidbu.<br><br>
+U okviru naših usluga obuhvatamo:<br>
+<ul style="list-style-type: none; padding-left: 0;">
+  <li>🔧 Motor servis i popravke</li>
+  <li>⚡ Električne instalacije i navigacionu opremu</li>
+  <li>❄️ Zimsku pripremu i skladištenje</li>
+  <li>🛠️ Ugradnja dodatne opreme</li>
+  <li>📞 Savetovanje i tehničku podršku</li>
+</ul>
+
+</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="slike/tim3.jpg" alt="Dijagnostika">
+            <div class="card-content">
+                <h3>Dijagnostika</h3>
+                <p><p>
+Naša usluga dijagnostike koristi najsavremeniju opremu i tehnologiju za detaljan pregled svih sistema na vašem plovilu. Bilo da je u pitanju motor, električni sistemi, navigaciona oprema ili drugi vitalni delovi, brzo i precizno identifikujemo potencijalne probleme pre nego što postanu veći kvarovi.
+</p><br>
+
+<p>Usluge dijagnostike uključuju:</p>
+
+<ul style="list-style-type: none; padding-left: 0;">
+  <li>🔍 Detaljnu proveru motora i pratećih sistema</li>
+  <li>⚡ Testiranje električnih instalacija i baterija</li>
+  <li>💡 Savetovanje o potrebnim popravkama i održavanju</li>
+</ul>
+</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="slike/servis.jpg" alt="Nabavka delova">
+            <div class="card-content">
+                <h3>Nabavka delova</h3>
+                <p>Obezbeđujemo brzo i pouzdano snabdevanje originalnim i proverenim rezervnim delovima za sve vrste plovila. Bilo da vam trebaju delovi za motor, električne komponente ili dodatna oprema, naš tim će vam pomoći da pronađete tačno ono što vam je potrebno — po konkurentnim cenama i sa garancijom kvaliteta.
+
+Uz našu uslugu nabavke delova, vaše plovilo će uvek biti opremljeno pravim komponentama koje osiguravaju sigurnost i optimalan rad</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="iskustva">
+        <div class="feature-item">
+            <h4>test</h4>
+            <p>test</p>
+        </div>
+        <div class="feature-item">
+            <h4>test</h4>
+            <p>test</p>
+        </div>
+        <div class="feature-item">
+            <h4>test</h4>
+            <p>test</p>
+        </div>
+        <div class="feature-item">
+            <h4>test</h4>
+            <p>test</p>
+        </div>
+    </section>
+    
+    <section class="features" id="kontakt">
+            
+        </section>
+    <footer>
+        &copy; 2025 Yachtproservice. Sva prava zadržana.
+    </footer>
+   <script>
+    const counters = document.querySelectorAll('.counter');
+
+    counters.forEach(counter => {
+      const target = +counter.getAttribute('data-target');
+      const speed = +counter.getAttribute('data-speed');
+      let count = 0;
+
+      const increment = Math.ceil(target / speed);
+
+      function update() {
+        if (count < target) {
+          count += increment;
+          if (count > target) count = target;
+          counter.innerText = count;
+          setTimeout(update, 20);
+        } else {
+          if (target === 1000 || target === 10) {
+            counter.innerText = target + '+';
+            } else {
+            counter.innerText = target;
+            }
+        }
+      }
+
+      update();
+    });
+  </script>
+
+
+    
+
+
+</body>
+</html>
